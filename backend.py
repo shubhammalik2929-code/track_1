@@ -1,33 +1,3 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import List, Optional
-import cv2
-import numpy as np
-import time
-from datetime import datetime
-
-# ==========================================
-# 1. ADD YOUR CV ENGINE IMPORTS HERE
-# ==========================================
-from cv_engine.detector import ShelfDetector
-from cv_engine.stockout_logic import StockoutTracker
-
-app = FastAPI(
-    title="Shelf Auditing & Stockout Backend",
-    description="E-Cell IIT Bombay Hackathon - Track 1 Backend API",
-    version="1.0.0"
-)
-
-# ==========================================
-# 2. INITIALIZE THEM GLOBALLY HERE
-# ==========================================
-detector = ShelfDetector(model_path="yolov8n.pt")
-tracker = StockoutTracker(persistence_limit_sec=30)
-
-# (Rest of your FastAPI routes like app.get(), app.post(), etc., follow below...)
-
-
 """
 ================================================================================
 Everseen x IIT Bombay - Retail Shelf Auditing AI Backend Engine
